@@ -1,9 +1,14 @@
 <?php
+//Error reporting for debug
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 require_once 'Link_Builder.php';
 
 $config = array(
 	'website'		=>	'youtube',
 	'file_location'	=>	'examples/youtube.txt',
+	'input_type'	=>	'text',
 );
 
 $youtube = new Link_Builder($config); ?>
@@ -12,14 +17,14 @@ $youtube = new Link_Builder($config); ?>
 <head>
 	<meta charset="utf-8"/>
 
-	<title>Link Viewer</title>
+	<title>Link Builder</title>
 	<style>
 		body{font-family:"Lucida Grande", Helvetica, Arial, sans-serif;}
 
 		/* Helper Classes */
 		.alt{background:#EFEFEF;}
-		.recommended{background:#FBEC5D; font-weight:bold;}
-			.recommended a{color:#A90000;}
+		.highlight{background:#FBEC5D; font-weight:bold;}
+			.highlight a{color:#A90000;}
 		table{
 			border: 1px solid #CCC;
 			color:#333; font-size:12px;
@@ -40,16 +45,11 @@ $youtube = new Link_Builder($config); ?>
 </head>
 
 <body>
-
 	<h1>YouTube</h1>
 	
-	<table border=1>
-		<thead>
-			<th>Link (<?php echo $youtube->total_count; ?> total)</th>
-			<th>Description</th>
-		</thead>
-		<?php $youtube->display_links(); ?>
-	</table>
+	<p>List of popular YouTube videos. The yellow line demonstrates markdown-style highlighting.</p>
+	
+	<?php $youtube->display_links(); ?>
 	
 </body>
 </html>

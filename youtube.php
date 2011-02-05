@@ -3,6 +3,9 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+//This line is needed for text files to be read by line
+ini_set('auto_detect_line_endings', true);
+
 require_once 'Link_Builder.php';
 
 $config = array(

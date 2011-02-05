@@ -1,11 +1,10 @@
 <?php
 //Take a text file of video ID codes and output them as links
-ini_set('auto_detect_line_endings', true);
 
 class Link_Builder 
 {
 
-	public $website; /* Name (slug) of site */
+	public $website; /* Slug of site preset to use*/
 	public $base_url;
 	public $file_location;
 	public $input_type;
@@ -19,7 +18,9 @@ class Link_Builder
 	{		
 		extract($config);
 		
-		//If the website slug has been included
+		/*
+			Get the target site's URL structure
+		*/
 		if (!empty($website)) :
 			//See if we have it on file, and populate if so
 			if (!$this->autofill_site($website) && !empty($base_url)) :
@@ -41,6 +42,9 @@ class Link_Builder
 			$this->highlight_code = strtolower($highlight);
 		endif;
 		
+		/*
+			Get location of links to load
+		*/
 		if (!empty($file_location)) :
 			$this->file_location = $file_location;
 		elseif (!empty($links)):
@@ -49,7 +53,7 @@ class Link_Builder
 			$this->input_type = 'array';
 		else:
 			//We need a file location
-			return false;
+			$this->links = false;
 		endif;
 		
 		//Package the object's $link array based on type of input
@@ -172,6 +176,13 @@ class Link_Builder
 	
 	public function display_links()
 	{
+	
+		//If no links are found, display an error
+		if (!$this->links) :
+			echo '<p>No links were found</p>';
+			return false;
+		endif;
+		
 		//Outputs a table of all links & descriptions
 		echo '<table border=1>';
 		echo '<thead>';

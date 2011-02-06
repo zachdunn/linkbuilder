@@ -1,0 +1,33 @@
+body{font-family:"Lucida Grande", Helvetica, Arial, sans-serif;}
+
+/* Helper Classes */
+.alt{background:#EFEFEF;}
+.highlight{background:#FBEC5D; font-weight:bold;}
+	.highlight a{color:#A90000;}
+
+/* Table Display */
+table{
+	border: 1px solid #CCC;
+	color:#333; font-size:12px;
+	border-collapse: collapse;
+}
+table th {
+	border: 1px dotted #CCC;
+	padding: 5px;
+	background:#3589d7;
+	color:#FFF;
+}
+table td {
+	border-width: 1px dotted #CCC;
+	padding: 6px;
+}
+
+/* For JSON output */
+.raw{
+	display:block;
+	padding:20px; 
+	background:#EFEFEF; 
+	color:#333; 
+	font:12px/1.4em Monaco, "Courier New", sans-serif; 
+	border:1px solid #DDD;
+}
